@@ -17,15 +17,26 @@ public class Google_StepDefinitions {
         Driver.getDriver().get("https://www.google.com");
     }
 
-    @When("User searches for apple")
-    public void user_searches_for_apple() {
-        gp.searchBar.sendKeys("apple", Keys.ENTER);
+    @When("User searches for {string}")
+    public void userSearchesFor(String fruit) {
+        gp.searchBar.sendKeys(fruit, Keys.ENTER);
     }
 
-    @Then("User should see apple in the title")
-    public void user_should_see_apple_in_the_title() {
-        Assert.assertTrue(Driver.getDriver().getTitle().contains("apple"));
-        Driver.closeDriver();
+    @Then("User should see {string} in the title")
+    public void userShouldSeeInTheTitle(String fruit) {
+        String actualTitle = Driver.getDriver().getTitle();
+        Assert.assertTrue(actualTitle.contains(fruit));
     }
+
+    @Then("User should see title is Google")
+    public void user_should_see_title_is_google() {
+        String actualTitle = Driver.getDriver().getTitle();
+        String expectedTitle = "Google";
+        Assert.assertTrue(actualTitle.contains(expectedTitle));
+
+    }
+
+
+
 
 }
