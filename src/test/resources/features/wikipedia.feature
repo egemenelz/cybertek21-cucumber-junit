@@ -9,6 +9,7 @@ Feature: Wikipedia Search Feature
     When user types "Steve Jobs" in the wiki search box
     And user clicks wiki search button
     Then user sees "Steve Jobs" is in the wiki title
+
   @wiki
   Scenario: User header verification
     When user types "Steve Jobs" in the wiki search box

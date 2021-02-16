@@ -1,14 +1,10 @@
 package com.cybertek.pages;
 
-import com.cybertek.utilities.Driver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
+
 
 public class WikipediaPage {
-    public WikipediaPage() {
-        PageFactory.initElements(Driver.getDriver(), this);
-    }
 
     @FindBy(id = "searchInput")
     private WebElement searchBox;
@@ -25,7 +21,7 @@ public class WikipediaPage {
         submitButton.click();
     }
 
-    public String getFirstHeader(){
+    public String getFirstHeader() {
         return firstHeader.getText();
     }
 
