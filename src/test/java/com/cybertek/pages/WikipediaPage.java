@@ -4,7 +4,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 
-public class WikipediaPage {
+public class WikipediaPage extends BasePage {
 
     @FindBy(id = "searchInput")
     private WebElement searchBox;
