@@ -11,7 +11,7 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features",
         glue = "com/cybertek/step_definitions",
         dryRun = false,
-        tags = "@googlewip"
+        tags = "@feature and @db"
 
         //@librarian or @student --> With or keyword, It will run the scenario if it has either one of tags.
         //@librarian and @employee --> With and keyword, it will run the scenario if it has BOTH OF THE TAGS at the same time
@@ -19,6 +19,5 @@ import org.junit.runner.RunWith;
 )
 
 public class CukesRunner {
-
 }
 
