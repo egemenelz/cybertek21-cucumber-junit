@@ -1,9 +1,9 @@
 package com.cybertek.step_definitions;
 
-import io.cucumber.java.After;
-import io.cucumber.java.AfterStep;
-import io.cucumber.java.Before;
-import io.cucumber.java.BeforeStep;
+import com.cybertek.utilities.Driver;
+import io.cucumber.java.*;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 
 public class Hooks {
 
@@ -18,9 +18,13 @@ public class Hooks {
     }
 
     @After(order = 2)
-    public void tearDownScenario() {
-        System.out.println("Closing browser");
-        System.out.println("Take a Screenshot");
+    public void tearDownScenario(Scenario scenario) {
+        if (scenario.isFailed()) {
+            byte[] screenShot = ((TakesScreenshot) Driver.getDriver()).getScreenshotAs(OutputType.BYTES);
+            scenario.attach(screenShot, "image/png", scenario.getName());
+        }
+
+        Driver.closeDriver();
     }
 
     @After(value = "@db", order = 1)
@@ -29,11 +33,12 @@ public class Hooks {
     }
 
     @BeforeStep
-    public void runBeforeStep(){
+    public void runBeforeStep() {
         System.out.println("Before step...");
     }
+
     @AfterStep
-    public void runsAfterStep(){
+    public void runsAfterStep() {
         System.out.println("After step...");
     }
 }
