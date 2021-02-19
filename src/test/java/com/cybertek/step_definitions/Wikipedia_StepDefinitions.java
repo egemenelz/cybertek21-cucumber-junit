@@ -39,4 +39,6 @@ public class Wikipedia_StepDefinitions {
     public void user_sees_in_the_main_header(String header) {
         Assert.assertTrue(wikipediaPage.getFirstHeader().equals(header));
     }
+
+
 }

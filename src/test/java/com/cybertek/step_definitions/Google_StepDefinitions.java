@@ -7,6 +7,9 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
+
+import java.util.List;
 
 public class Google_StepDefinitions {
 
@@ -36,7 +39,15 @@ public class Google_StepDefinitions {
 
     }
 
-
+    @Then("User should see following links")
+    public void user_should_see_following_links(List<String> linkList) {
+        int i = 0;
+        for (WebElement eachLink : gp.footerLinks) {
+            System.out.println("eachLink = " + eachLink.getText());
+            System.out.println("linkList = " + linkList.get(i++));
+            Assert.assertEquals(eachLink.getText(), linkList.get(i++));
+        }
+    }
 
 
 }
